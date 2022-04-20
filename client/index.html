@@ -20,9 +20,11 @@
     <title>Real Time Tweet</title>
   </head>
   <body>
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-light bg-light">
       <div class="container">
-        <a href="#" class="navbar-brand">Real Time Tweet</a>
+        <a href="#" class="navbar-brand" style="color: black"
+          >Twitter Real Time</a
+        >
       </div>
     </nav>
     <div class="container">
@@ -50,6 +52,8 @@
           id: tweet.data.id,
           text: tweet.data.text,
           username: `@${tweet.includes.users[0].username}`,
+          retweet_count: tweet.data.public_metrics.retweet_count,
+          reply_count: tweet.data.public_metrics.reply_count,
         };
 
         const tweetEl = document.createElement("div");
@@ -58,10 +62,12 @@
             <div class="card-body">
                 <h5 class="card-title">${tweetData.text}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${tweetData.username}</h6>
-                
+
                 <a class="btn btn-primary mt-3" href="https://twitter.com/${tweetData.username}/status/${tweetData.id}">
-                    <i class="fab fa-twitter"></i> Go To Tweet    
+                    <i class="fab fa-twitter"></i> Go To Tweet
                 </a>
+                <h4>Retweet count : ${tweetData.retweet_count}</h4>
+                <h4>Retweet count : ${tweetData.reply_count}</h4>
             </div>
         `;
 
